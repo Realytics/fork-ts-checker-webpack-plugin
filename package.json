@@ -74,6 +74,20 @@
     "semver": "^7.3.2",
     "tapable": "^1.0.0"
   },
+  "peerDependencies": {
+    "eslint": ">= 6",
+    "typescript": ">= 2.7",
+    "webpack": ">= 4",
+    "vue-template-compiler": "*"
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    },
+    "vue-template-compiler": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "@semantic-release/commit-analyzer": "^8.0.1",
