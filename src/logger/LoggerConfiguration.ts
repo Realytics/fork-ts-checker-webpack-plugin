@@ -1,6 +1,6 @@
+import * as webpack from 'webpack';
 import LoggerOptions from './LoggerOptions';
 import Logger from './Logger';
-import webpack from 'webpack';
 import { createLogger } from './LoggerFactory';
 
 interface LoggerConfiguration {

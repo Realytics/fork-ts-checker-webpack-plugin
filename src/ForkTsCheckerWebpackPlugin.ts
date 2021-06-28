@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+import * as webpack from 'webpack';
 import validateOptions from 'schema-utils';
 // type only dependency
 // eslint-disable-next-line node/no-extraneous-import

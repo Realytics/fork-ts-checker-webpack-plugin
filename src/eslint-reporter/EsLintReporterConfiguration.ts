@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+import * as webpack from 'webpack';
 import { isAbsolute, join } from 'path';
 import { EsLintReporterOptions } from './EsLintReporterOptions';
 import { CLIEngineOptions } from './types/eslint';

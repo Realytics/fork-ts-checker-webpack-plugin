@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+import * as webpack from 'webpack';
 import { ForkTsCheckerWebpackPluginConfiguration } from '../ForkTsCheckerWebpackPluginConfiguration';
 import { getForkTsCheckerWebpackPluginHooks } from './pluginHooks';
 import { RpcIpcMessagePortClosedError } from '../rpc/rpc-ipc/error/RpcIpcMessagePortClosedError';

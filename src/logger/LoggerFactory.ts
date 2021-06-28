@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+import * as webpack from 'webpack';
 import Logger from './Logger';
 import { createWebpackInfrastructureLogger } from './WebpackInfrastructureLogger';
 import { createPartialLogger } from './PartialLogger';

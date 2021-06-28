@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+import * as webpack from 'webpack';
 import path from 'path';
 import semver from 'semver';
 import { TypeScriptDiagnosticsOptions } from './TypeScriptDiagnosticsOptions';

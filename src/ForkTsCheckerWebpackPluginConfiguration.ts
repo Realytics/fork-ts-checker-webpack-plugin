@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+import * as webpack from 'webpack';
 import { ForkTsCheckerWebpackPluginOptions } from './ForkTsCheckerWebpackPluginOptions';
 import { createIssueConfiguration, IssueConfiguration } from './issue/IssueConfiguration';
 import { createFormatterConfiguration, FormatterConfiguration } from './formatter';

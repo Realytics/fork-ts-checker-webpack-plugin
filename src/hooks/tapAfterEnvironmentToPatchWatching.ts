@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+import * as webpack from 'webpack';
 import { ForkTsCheckerWebpackPluginState } from '../ForkTsCheckerWebpackPluginState';
 import { InclusiveNodeWatchFileSystem } from '../watch/InclusiveNodeWatchFileSystem';
 import { CompilerWithWatchFileSystem } from '../watch/CompilerWithWatchFileSystem';
