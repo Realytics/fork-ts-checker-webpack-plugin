@@ -23,7 +23,7 @@ import { tapAfterEnvironmentToPatchWatching } from './hooks/tapAfterEnvironmentT
 import { createPool, Pool } from './utils/async/pool';
 import os from 'os';
 
-class ForkTsCheckerWebpackPlugin implements webpack.Plugin {
+class ForkTsCheckerWebpackPlugin implements webpack.WebpackPluginInstance {
   /**
    * Current version of the plugin
    */

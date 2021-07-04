@@ -21,7 +21,7 @@ describe('Webpack Production Build', () => {
     await sandbox.cleanup();
   });
 
-  it.each([{ webpack: '4.0.0' }, { webpack: '^4.0.0' }, { webpack: '^5.0.0' }])(
+  it.each([{ webpack: '^5.11.0' }])(
     'compiles the project successfully with %p',
     async ({ webpack }) => {
       await sandbox.load([
@@ -66,7 +66,7 @@ describe('Webpack Production Build', () => {
     }
   );
 
-  it.each([{ webpack: '4.0.0' }, { webpack: '^4.0.0' }, { webpack: '^5.0.0' }])(
+  it.each([{ webpack: '^5.11.0' }])(
     'exits with error on the project error with %p',
     async ({ webpack }) => {
       await sandbox.load([
@@ -125,7 +125,7 @@ describe('Webpack Production Build', () => {
             "TS2307: Cannot find module './model/User'.",
             "  > 1 | import { User } from './model/User';",
             '      |                      ^^^^^^^^^^^^^^',
-            '    2 | ',
+            '    2 |',
             '    3 | async function login(email: string, password: string): Promise<User> {',
             '    4 |   const response = await fetch(',
           ].join('\n'),
@@ -135,7 +135,7 @@ describe('Webpack Production Build', () => {
             "    1 | import { login } from './authenticate';",
             "  > 2 | import { getUserName } from './model/User';",
             '      |                             ^^^^^^^^^^^^^^',
-            '    3 | ',
+            '    3 |',
             "    4 | const emailInput = document.getElementById('email');",
             "    5 | const passwordInput = document.getElementById('password');",
           ].join('\n'),

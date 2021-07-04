@@ -24,10 +24,8 @@ describe('TypeScript Watch API', () => {
   });
 
   it.each([
-    { async: false, webpack: '4.0.0' },
-    { async: true, webpack: '^4.0.0' },
-    { async: false, webpack: '^5.0.0' },
-    { async: true, webpack: '^5.0.0' },
+    { async: false, webpack: '^5.11.0' },
+    { async: true, webpack: '^5.11.0' },
   ])('reports semantic error for %p with ts-loader', async ({ async, webpack }) => {
     await sandbox.load([
       await readFixture(join(__dirname, 'fixtures/environment/typescript-basic.fixture'), {
@@ -64,7 +62,7 @@ describe('TypeScript Watch API', () => {
         'ERROR in src/index.ts:34:7',
         `TS2367: This condition will always return 'false' since the types 'Role' and '"admin"' have no overlap.`,
         '    32 |   const user = await login(email, password);',
-        '    33 | ',
+        '    33 |',
         `  > 34 |   if (user.role === 'admin') {`,
         '       |       ^^^^^^^^^^^^^^^^^^^^^',
         '    35 |     console.log(`Logged in as ${getUserName(user)} [admin].`);',
@@ -107,7 +105,7 @@ describe('TypeScript Watch API', () => {
         "TS2307: Cannot find module './Role'.",
         "  > 1 | import { Role } from './Role';",
         '      |                      ^^^^^^^^',
-        '    2 | ',
+        '    2 |',
         '    3 | type User = {',
         '    4 |   id: string;',
       ].join('\n'),
@@ -126,7 +124,7 @@ describe('TypeScript Watch API', () => {
         'ERROR in src/index.ts:34:7',
         "TS2367: This condition will always return 'false' since the types 'Role' and '\"provider\"' have no overlap.",
         '    32 |   const user = await login(email, password);',
-        '    33 | ',
+        '    33 |',
         "  > 34 |   if (user.role === 'provider') {",
         '       |       ^^^^^^^^^^^^^^^^^^^^^^^^',
         '    35 |     console.log(`Logged in as ${getUserName(user)} [provider].`);',
@@ -137,10 +135,8 @@ describe('TypeScript Watch API', () => {
   });
 
   it.each([
-    { async: false, webpack: '4.0.0' },
-    { async: true, webpack: '^4.0.0' },
-    { async: false, webpack: '^5.0.0' },
-    { async: true, webpack: '^5.0.0' },
+    { async: false, webpack: '^5.11.0' },
+    { async: true, webpack: '^5.11.0' },
   ])('reports semantic error for %p with babel-loader', async ({ async, webpack }) => {
     await sandbox.load([
       await readFixture(
@@ -179,7 +175,7 @@ describe('TypeScript Watch API', () => {
         'ERROR in src/index.ts:34:7',
         `TS2367: This condition will always return 'false' since the types 'Role' and '"admin"' have no overlap.`,
         '    32 |   const user = await login(email, password);',
-        '    33 | ',
+        '    33 |',
         `  > 34 |   if (user.role === 'admin') {`,
         '       |       ^^^^^^^^^^^^^^^^^^^^^',
         '    35 |     console.log(`Logged in as ${getUserName(user)} [admin].`);',
@@ -222,7 +218,7 @@ describe('TypeScript Watch API', () => {
         "TS2307: Cannot find module './Role'.",
         "  > 1 | import { Role } from './Role';",
         '      |                      ^^^^^^^^',
-        '    2 | ',
+        '    2 |',
         '    3 | type User = {',
         '    4 |   id: string;',
       ].join('\n'),
@@ -241,7 +237,7 @@ describe('TypeScript Watch API', () => {
         'ERROR in src/index.ts:34:7',
         "TS2367: This condition will always return 'false' since the types 'Role' and '\"provider\"' have no overlap.",
         '    32 |   const user = await login(email, password);',
-        '    33 | ',
+        '    33 |',
         "  > 34 |   if (user.role === 'provider') {",
         '       |       ^^^^^^^^^^^^^^^^^^^^^^^^',
         '    35 |     console.log(`Logged in as ${getUserName(user)} [provider].`);',
@@ -252,10 +248,10 @@ describe('TypeScript Watch API', () => {
   });
 
   it.each([
-    { async: true, webpack: '^4.0.0', typescript: '2.7.1', tsloader: '^5.0.0' },
-    { async: false, webpack: '^4.0.0', typescript: '~3.0.0', tsloader: '^6.0.0' },
-    { async: true, webpack: '^4.0.0', typescript: '~3.6.0', tsloader: '^7.0.0' },
-    { async: false, webpack: '^4.0.0', typescript: '~3.8.0', tsloader: '^6.0.0' },
+    { async: true, webpack: '^5.11.0', typescript: '2.7.1', tsloader: '^5.0.0' },
+    { async: false, webpack: '^5.11.0', typescript: '~3.0.0', tsloader: '^6.0.0' },
+    { async: true, webpack: '^5.11.0', typescript: '~3.6.0', tsloader: '^7.0.0' },
+    { async: false, webpack: '^5.11.0', typescript: '~3.8.0', tsloader: '^6.0.0' },
   ])('reports semantic error for %p', async ({ async, webpack, typescript, tsloader }) => {
     await sandbox.load([
       await readFixture(join(__dirname, 'fixtures/environment/typescript-basic.fixture'), {
@@ -291,7 +287,7 @@ describe('TypeScript Watch API', () => {
       [
         'ERROR in src/model/User.ts:11:16',
         "TS2339: Property 'firstName' does not exist on type 'User'.",
-        '     9 | ',
+        '     9 |',
         '    10 | function getUserName(user: User): string {',
         '  > 11 |   return [user.firstName, user.lastName]',
         '       |                ^^^^^^^^^',
@@ -302,7 +298,7 @@ describe('TypeScript Watch API', () => {
       [
         'ERROR in src/model/User.ts:11:32',
         "TS2339: Property 'lastName' does not exist on type 'User'.",
-        '     9 | ',
+        '     9 |',
         '    10 | function getUserName(user: User): string {',
         '  > 11 |   return [user.firstName, user.lastName]',
         '       |                                ^^^^^^^^',
@@ -330,13 +326,20 @@ describe('TypeScript Watch API', () => {
 
     errors = await driver.waitForErrors();
     expect(errors).toEqual([
+      // First error is from webpack compilation
+      expect.stringContaining(
+        [
+          'ERROR in ./src/index.ts 39:21-46',
+          "Module not found: Error: Can't resolve './authenticate'",
+        ].join('\n')
+      ),
       [
         'ERROR in src/index.ts:1:23',
         "TS2307: Cannot find module './authenticate'.",
         "  > 1 | import { login } from './authenticate';",
         '      |                       ^^^^^^^^^^^^^^^^',
         "    2 | import { getUserName } from './model/User';",
-        '    3 | ',
+        '    3 |',
         "    4 | const emailInput = document.getElementById('email');",
       ].join('\n'),
     ]);
@@ -378,7 +381,7 @@ describe('TypeScript Watch API', () => {
         'ERROR in src/index.ts:34:12',
         "TS2339: Property 'role' does not exist on type 'void'.",
         '    32 |   const user = await login(email, password);',
-        '    33 | ',
+        '    33 |',
         "  > 34 |   if (user.role === 'admin') {",
         '       |            ^^^^',
         '    35 |     console.log(`Logged in as ${getUserName(user)} [admin].`);',
@@ -388,7 +391,7 @@ describe('TypeScript Watch API', () => {
       [
         'ERROR in src/index.ts:35:45',
         "TS2345: Argument of type 'void' is not assignable to parameter of type 'User'.",
-        '    33 | ',
+        '    33 |',
         "    34 |   if (user.role === 'admin') {",
         '  > 35 |     console.log(`Logged in as ${getUserName(user)} [admin].`);',
         '       |                                             ^^^^',
@@ -405,21 +408,15 @@ describe('TypeScript Watch API', () => {
         '       |                                             ^^^^',
         '    38 |   }',
         '    39 | });',
-        '    40 | ',
+        '    40 |',
       ].join('\n'),
     ]);
   });
 
   it.each([
-    { webpack: '4.0.0', async: false, ignored: '[path.resolve(__dirname, "src/model/**")]' },
-    { webpack: '^4.0.0', async: true, ignored: '"**/src/model/**"' },
-    { webpack: '^5.0.0', async: false, ignored: '/src\\/model/' },
-    {
-      webpack: '^4.0.0',
-      async: true,
-      ignored:
-        '(file) => forwardSlash(file).includes(forwardSlash(path.resolve(__dirname, "src/model/")))',
-    },
+    { webpack: '5.11.0', async: false, ignored: '[path.resolve(__dirname, "src/model/**")]' },
+    { webpack: '^5.11.0', async: true, ignored: '"**/src/model/**"' },
+    { webpack: '^5.11.0', async: false, ignored: '/src\\/model/' },
   ])('ignores directories from watch with %p', async ({ webpack, async, ignored }) => {
     await sandbox.load([
       await readFixture(join(__dirname, 'fixtures/environment/typescript-basic.fixture'), {
@@ -436,16 +433,6 @@ describe('TypeScript Watch API', () => {
       await readFixture(join(__dirname, 'fixtures/implementation/typescript-basic.fixture')),
     ]);
 
-    await sandbox.patch(
-      'webpack.config.js',
-      'module.exports = {',
-      [
-        'function forwardSlash(input) {',
-        "  return path.normalize(input).replace(/\\\\+/g, '/');",
-        '}',
-        'module.exports = {',
-      ].join('\n')
-    );
     await sandbox.patch(
       'webpack.config.js',
       "  entry: './src/index.ts',",

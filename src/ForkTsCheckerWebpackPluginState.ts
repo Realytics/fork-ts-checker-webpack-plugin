@@ -1,4 +1,4 @@
-import { Tap } from 'tapable';
+import { FullTap } from 'tapable';
 import { FilesMatch, Report } from './reporter';
 import { Issue } from './issue';
 
@@ -9,7 +9,7 @@ interface ForkTsCheckerWebpackPluginState {
   lastDependencies: FilesMatch | undefined;
   watching: boolean;
   initialized: boolean;
-  webpackDevServerDoneTap: Tap | undefined;
+  webpackDevServerDoneTap: FullTap | undefined;
 }
 
 function createForkTsCheckerWebpackPluginState(): ForkTsCheckerWebpackPluginState {

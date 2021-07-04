@@ -23,10 +23,10 @@ describe('TypeScript SolutionBuilder API', () => {
     await sandbox.cleanup();
   });
 
-  it.each([
+  it.only.each([
     { async: false, typescript: '~3.6.0', mode: 'readonly' },
-    { async: true, typescript: '~3.8.0', mode: 'write-tsbuildinfo' },
-    { async: false, typescript: '~3.8.0', mode: 'write-references' },
+    // { async: true, typescript: '~3.8.0', mode: 'write-tsbuildinfo' },
+    // { async: false, typescript: '~3.8.0', mode: 'write-references' },
   ])('reports semantic error for %p', async ({ async, typescript, mode }) => {
     await sandbox.load([
       await readFixture(join(__dirname, 'fixtures/environment/typescript-monorepo.fixture'), {
@@ -34,7 +34,7 @@ describe('TypeScript SolutionBuilder API', () => {
           FORK_TS_CHECKER_WEBPACK_PLUGIN_VERSION
         ),
         TYPESCRIPT_VERSION: JSON.stringify(typescript),
-        WEBPACK_VERSION: JSON.stringify('^4.0.0'),
+        WEBPACK_VERSION: JSON.stringify('^5.11.0'),
         WEBPACK_CLI_VERSION: JSON.stringify(WEBPACK_CLI_VERSION),
         WEBPACK_DEV_SERVER_VERSION: JSON.stringify(WEBPACK_DEV_SERVER_VERSION),
         ASYNC: JSON.stringify(async),
@@ -48,6 +48,7 @@ describe('TypeScript SolutionBuilder API', () => {
 
     // initial compilation should be successful
     await driver.waitForNoErrors();
+    console.log(1);
 
     // create semantic error in shared package
     await sandbox.patch('packages/shared/src/intersect.ts', 'arrayB: T[] = []', 'arrayB: T');
@@ -103,6 +104,7 @@ describe('TypeScript SolutionBuilder API', () => {
 
     // this compilation should be successful
     await driver.waitForNoErrors();
+    console.log(2);
 
     await sandbox.write('packages/client/src/nested/additional.ts', 'export const x = 10;');
     await sandbox.patch(
@@ -113,6 +115,7 @@ describe('TypeScript SolutionBuilder API', () => {
 
     // this compilation should be successful
     await driver.waitForNoErrors();
+    console.log(3);
     // close webpack-dev-server
     await sandbox.kill(driver.process);
 

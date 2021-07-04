@@ -2,7 +2,7 @@ import { EventEmitter } from 'events';
 
 interface WatchFileSystemOptions {
   aggregateTimeout: number;
-  poll: boolean;
+  poll: number | boolean;
   followSymlinks: boolean;
   ignored: string | RegExp | Function | (string | RegExp | Function)[];
 }
@@ -21,15 +21,21 @@ interface WatcherV4 {
   getContextTimestamps(): Map<string, number>;
 }
 
+interface TimeInfoEntry {
+  safeTime: number;
+  timestamp?: number;
+  timestampHash?: string;
+}
+
 // webpack 5 interface
 interface WatcherV5 {
   close(): void;
   pause(): void;
-  getFileTimeInfoEntries(): Map<string, number>;
-  getContextTimeInfoEntries(): Map<string, number>;
+  getFileTimeInfoEntries(): Map<string, TimeInfoEntry>;
+  getContextTimeInfoEntries(): Map<string, TimeInfoEntry>;
 }
 
-type Watcher = WatcherV4 | WatcherV5;
+type Watcher = WatcherV4 & WatcherV5;
 
 interface WatchFileSystem {
   watcher: Watchpack;
@@ -40,7 +46,7 @@ interface WatchFileSystem {
     files: Iterable<string>,
     dirs: Iterable<string>,
     missing: Iterable<string>,
-    startTime?: number,
+    startTime: number,
     options?: Partial<WatchFileSystemOptions>,
     callback?: Function,
     callbackUndelayed?: Function

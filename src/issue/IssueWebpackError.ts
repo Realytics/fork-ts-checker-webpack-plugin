@@ -1,11 +1,11 @@
 import { relative } from 'path';
+import { WebpackError } from 'webpack';
 import { Issue } from './Issue';
 import { formatIssueLocation } from './IssueLocation';
 import forwardSlash from '../utils/path/forwardSlash';
 
-class IssueWebpackError extends Error {
+class IssueWebpackError extends WebpackError {
   readonly hideStack = true;
-  readonly file: string | undefined;
 
   constructor(message: string, readonly issue: Issue) {
     super(message);

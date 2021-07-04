@@ -24,9 +24,9 @@ describe('TypeScript PnP Support', () => {
   });
 
   it.each([
-    { async: true, webpack: '^4.0.0', typescript: '2.7.1', tsloader: '^5.0.0' },
-    { async: false, webpack: '^4.0.0', typescript: '~3.0.0', tsloader: '^6.0.0' },
-    { async: true, webpack: '^4.0.0', typescript: '~3.8.0', tsloader: '^7.0.0' },
+    { async: true, webpack: '^5.11.0', typescript: '2.7.1', tsloader: '^5.0.0' },
+    { async: false, webpack: '^5.11.0', typescript: '~3.0.0', tsloader: '^6.0.0' },
+    { async: true, webpack: '^5.11.0', typescript: '~3.8.0', tsloader: '^7.0.0' },
   ])('reports semantic error for %p', async ({ async, webpack, typescript, tsloader }) => {
     await sandbox.load(
       [
@@ -65,7 +65,7 @@ describe('TypeScript PnP Support', () => {
       [
         'ERROR in src/model/User.ts:11:16',
         "TS2339: Property 'firstName' does not exist on type 'User'.",
-        '     9 | ',
+        '     9 |',
         '    10 | function getUserName(user: User): string {',
         '  > 11 |   return [user.firstName, user.lastName]',
         '       |                ^^^^^^^^^',
@@ -76,7 +76,7 @@ describe('TypeScript PnP Support', () => {
       [
         'ERROR in src/model/User.ts:11:32',
         "TS2339: Property 'lastName' does not exist on type 'User'.",
-        '     9 | ',
+        '     9 |',
         '    10 | function getUserName(user: User): string {',
         '  > 11 |   return [user.firstName, user.lastName]',
         '       |                                ^^^^^^^^',
@@ -104,13 +104,19 @@ describe('TypeScript PnP Support', () => {
 
     errors = await driver.waitForErrors();
     expect(errors).toEqual([
+      expect.stringContaining(
+        [
+          'ERROR in ./src/index.ts 39:21-46',
+          "Module not found: Error: Can't resolve './authenticate'",
+        ].join('\n')
+      ),
       [
         'ERROR in src/index.ts:1:23',
         "TS2307: Cannot find module './authenticate'.",
         "  > 1 | import { login } from './authenticate';",
         '      |                       ^^^^^^^^^^^^^^^^',
         "    2 | import { getUserName } from './model/User';",
-        '    3 | ',
+        '    3 |',
         "    4 | const emailInput = document.getElementById('email');",
       ].join('\n'),
     ]);
@@ -152,7 +158,7 @@ describe('TypeScript PnP Support', () => {
         'ERROR in src/index.ts:34:12',
         "TS2339: Property 'role' does not exist on type 'void'.",
         '    32 |   const user = await login(email, password);',
-        '    33 | ',
+        '    33 |',
         "  > 34 |   if (user.role === 'admin') {",
         '       |            ^^^^',
         '    35 |     console.log(`Logged in as ${getUserName(user)} [admin].`);',
@@ -162,7 +168,7 @@ describe('TypeScript PnP Support', () => {
       [
         'ERROR in src/index.ts:35:45',
         "TS2345: Argument of type 'void' is not assignable to parameter of type 'User'.",
-        '    33 | ',
+        '    33 |',
         "    34 |   if (user.role === 'admin') {",
         '  > 35 |     console.log(`Logged in as ${getUserName(user)} [admin].`);',
         '       |                                             ^^^^',
@@ -179,7 +185,7 @@ describe('TypeScript PnP Support', () => {
         '       |                                             ^^^^',
         '    38 |   }',
         '    39 | });',
-        '    40 | ',
+        '    40 |',
       ].join('\n'),
     ]);
   });

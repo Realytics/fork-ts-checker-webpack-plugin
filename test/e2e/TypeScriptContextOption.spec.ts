@@ -37,7 +37,7 @@ describe('TypeScript Context Option', () => {
         ),
         TS_LOADER_VERSION: JSON.stringify('^7.0.0'),
         TYPESCRIPT_VERSION: JSON.stringify(typescript),
-        WEBPACK_VERSION: JSON.stringify('^4.0.0'),
+        WEBPACK_VERSION: JSON.stringify('^5.11.0'),
         WEBPACK_CLI_VERSION: JSON.stringify(WEBPACK_CLI_VERSION),
         WEBPACK_DEV_SERVER_VERSION: JSON.stringify(WEBPACK_DEV_SERVER_VERSION),
         ASYNC: JSON.stringify(async),
@@ -120,7 +120,7 @@ describe('TypeScript Context Option', () => {
       [
         'ERROR in ../src/model/User.ts:11:16',
         "TS2339: Property 'firstName' does not exist on type 'User'.",
-        '     9 | ',
+        '     9 |',
         '    10 | function getUserName(user: User): string {',
         '  > 11 |   return [user.firstName, user.lastName]',
         '       |                ^^^^^^^^^',
@@ -131,7 +131,7 @@ describe('TypeScript Context Option', () => {
       [
         'ERROR in ../src/model/User.ts:11:32',
         "TS2339: Property 'lastName' does not exist on type 'User'.",
-        '     9 | ',
+        '     9 |',
         '    10 | function getUserName(user: User): string {',
         '  > 11 |   return [user.firstName, user.lastName]',
         '       |                                ^^^^^^^^',

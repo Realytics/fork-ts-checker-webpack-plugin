@@ -10,14 +10,14 @@ const compilerHookMap = new WeakMap<
 
 function createForkTsCheckerWebpackPluginHooks() {
   return {
-    start: new AsyncSeriesWaterfallHook<FilesChange, webpack.compilation.Compilation>([
+    start: new AsyncSeriesWaterfallHook<[FilesChange, webpack.Compilation]>([
       'change',
       'compilation',
     ]),
-    waiting: new SyncHook<webpack.compilation.Compilation>(['compilation']),
-    canceled: new SyncHook<webpack.compilation.Compilation>(['compilation']),
-    error: new SyncHook<Error, webpack.compilation.Compilation>(['error', 'compilation']),
-    issues: new SyncWaterfallHook<Issue[], webpack.compilation.Compilation | undefined, void>([
+    waiting: new SyncHook<webpack.Compilation>(['compilation']),
+    canceled: new SyncHook<webpack.Compilation>(['compilation']),
+    error: new SyncHook<[Error, webpack.Compilation]>(['error', 'compilation']),
+    issues: new SyncWaterfallHook<[Issue[], webpack.Compilation | undefined]>([
       'issues',
       'compilation',
     ]),

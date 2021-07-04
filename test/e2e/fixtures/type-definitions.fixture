@@ -8,8 +8,8 @@
     "tsc": "tsc"
   },
   "devDependencies": {
-    "@types/webpack": "^4.0.0",
     "fork-ts-checker-webpack-plugin": ${FORK_TS_CHECKER_WEBPACK_PLUGIN_VERSION},
+    "webpack": "^5.11.0",
     "typescript": "~3.8.0"
   }
 }

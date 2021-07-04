@@ -24,10 +24,10 @@ describe('TypeScript Configuration Change', () => {
   });
 
   it.each([
-    { async: true, webpack: '~4.0.0', typescript: '2.7.1', tsloader: '^5.0.0' },
-    { async: false, webpack: '^4.0.0', typescript: '~3.0.0', tsloader: '^6.0.0' },
-    { async: true, webpack: '^5.0.0', typescript: '~3.7.0', tsloader: '^7.0.0' },
-    { async: false, webpack: '^5.0.0', typescript: '~3.8.0', tsloader: '^6.0.0' },
+    { async: true, webpack: '~5.11.0', typescript: '2.7.1', tsloader: '^5.0.0' },
+    { async: false, webpack: '^5.11.0', typescript: '~3.0.0', tsloader: '^6.0.0' },
+    { async: true, webpack: '^5.11.0', typescript: '~3.7.0', tsloader: '^7.0.0' },
+    { async: false, webpack: '^5.11.0', typescript: '~3.8.0', tsloader: '^6.0.0' },
   ])(
     'change in the tsconfig.json affects compilation for %p',
     async ({ async, webpack, typescript, tsloader }) => {

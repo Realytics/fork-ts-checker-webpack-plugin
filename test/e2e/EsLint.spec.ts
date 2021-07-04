@@ -24,10 +24,8 @@ describe('EsLint', () => {
   });
 
   it.each([
-    { async: false, webpack: '4.0.0', absolute: false },
-    { async: true, webpack: '^4.0.0', absolute: true },
-    { async: false, webpack: '^5.0.0', absolute: true },
-    { async: true, webpack: '^5.0.0', absolute: false },
+    { async: false, webpack: '^5.11.0', absolute: true },
+    { async: true, webpack: '^5.11.0', absolute: false },
   ])('reports lint error for %p', async ({ async, webpack, absolute }) => {
     await sandbox.load([
       await readFixture(join(__dirname, 'fixtures/environment/eslint-basic.fixture'), {
@@ -61,7 +59,7 @@ describe('EsLint', () => {
         'WARNING in src/authenticate.ts:14:34',
         '@typescript-eslint/no-explicit-any: Unexpected any. Specify a different type.',
         '    12 | }',
-        '    13 | ',
+        '    13 |',
         '  > 14 | async function logout(): Promise<any> {',
         '       |                                  ^^^',
         '    15 |   const response = await fetch(',
@@ -76,7 +74,7 @@ describe('EsLint', () => {
         "  > 31 | loginForm.addEventListener('submit', async event => {",
         '       |                                            ^^^^^',
         '    32 |   const user = await login(email, password);',
-        '    33 | ',
+        '    33 |',
         "    34 |   if (user.role === 'admin') {",
       ].join('\n'),
     ]);
@@ -127,22 +125,22 @@ describe('EsLint', () => {
         'WARNING in src/model/User.ts:11:5',
         "@typescript-eslint/no-unused-vars: 'temporary' is defined but never used.",
         '     9 | }',
-        '    10 | ',
+        '    10 |',
         '  > 11 | let temporary: any;',
         '       |     ^^^^^^^^^^^^^^',
-        '    12 | ',
-        '    13 | ',
+        '    12 |',
+        '    13 |',
         '    14 | function getUserName(user: User): string {',
       ].join('\n'),
       [
         'WARNING in src/model/User.ts:11:16',
         '@typescript-eslint/no-explicit-any: Unexpected any. Specify a different type.',
         '     9 | }',
-        '    10 | ',
+        '    10 |',
         '  > 11 | let temporary: any;',
         '       |                ^^^',
-        '    12 | ',
-        '    13 | ',
+        '    12 |',
+        '    13 |',
         '    14 | function getUserName(user: User): string {',
       ].join('\n'),
     ]);
@@ -156,7 +154,7 @@ describe('EsLint', () => {
         ),
         TS_LOADER_VERSION: JSON.stringify('^5.0.0'),
         TYPESCRIPT_VERSION: JSON.stringify('~3.8.0'),
-        WEBPACK_VERSION: JSON.stringify('^4.0.0'),
+        WEBPACK_VERSION: JSON.stringify('^5.11.0'),
         WEBPACK_CLI_VERSION: JSON.stringify(WEBPACK_CLI_VERSION),
         WEBPACK_DEV_SERVER_VERSION: JSON.stringify(WEBPACK_DEV_SERVER_VERSION),
         ASYNC: JSON.stringify(false),
@@ -218,7 +216,7 @@ describe('EsLint', () => {
         ),
         TS_LOADER_VERSION: JSON.stringify('^5.0.0'),
         TYPESCRIPT_VERSION: JSON.stringify('~3.8.0'),
-        WEBPACK_VERSION: JSON.stringify('^4.0.0'),
+        WEBPACK_VERSION: JSON.stringify('^5.11.0'),
         WEBPACK_CLI_VERSION: JSON.stringify(WEBPACK_CLI_VERSION),
         WEBPACK_DEV_SERVER_VERSION: JSON.stringify(WEBPACK_DEV_SERVER_VERSION),
         ASYNC: JSON.stringify(false),

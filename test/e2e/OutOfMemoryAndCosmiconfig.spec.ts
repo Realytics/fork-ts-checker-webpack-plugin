@@ -20,10 +20,8 @@ describe('ForkTsCheckerWebpackPlugin Out Of Memory and Cosmiconfig', () => {
   });
 
   it.each([
-    { async: false, webpack: '4.0.0' },
-    { async: true, webpack: '^4.0.0' },
-    { async: false, webpack: '^5.0.0' },
-    { async: true, webpack: '^5.0.0' },
+    { async: false, webpack: '^5.11.0' },
+    { async: true, webpack: '^5.11.0' },
   ])('handles out of memory for %p', async ({ async, webpack }) => {
     await sandbox.load([
       await readFixture(join(__dirname, 'fixtures/environment/typescript-basic.fixture'), {

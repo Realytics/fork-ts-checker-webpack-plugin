@@ -31,7 +31,7 @@ describe('TypeScript Generate Trace', () => {
         ),
         TS_LOADER_VERSION: JSON.stringify('^7.0.0'),
         TYPESCRIPT_VERSION: JSON.stringify('4.1.0-beta'),
-        WEBPACK_VERSION: JSON.stringify('^4.0.0'),
+        WEBPACK_VERSION: JSON.stringify('^5.11.0'),
         WEBPACK_CLI_VERSION: JSON.stringify(WEBPACK_CLI_VERSION),
         WEBPACK_DEV_SERVER_VERSION: JSON.stringify(WEBPACK_DEV_SERVER_VERSION),
         ASYNC: JSON.stringify(true),
@@ -62,7 +62,7 @@ describe('TypeScript Generate Trace', () => {
           FORK_TS_CHECKER_WEBPACK_PLUGIN_VERSION
         ),
         TYPESCRIPT_VERSION: JSON.stringify('4.1.0-beta'),
-        WEBPACK_VERSION: JSON.stringify('^4.0.0'),
+        WEBPACK_VERSION: JSON.stringify('^5.11.0'),
         WEBPACK_CLI_VERSION: JSON.stringify(WEBPACK_CLI_VERSION),
         WEBPACK_DEV_SERVER_VERSION: JSON.stringify(WEBPACK_DEV_SERVER_VERSION),
         ASYNC: JSON.stringify(true),

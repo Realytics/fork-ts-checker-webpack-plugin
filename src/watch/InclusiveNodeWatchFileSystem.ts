@@ -58,7 +58,7 @@ class InclusiveNodeWatchFileSystem implements WatchFileSystem {
     files: Iterable<string>,
     dirs: Iterable<string>,
     missing: Iterable<string>,
-    startTime?: number,
+    startTime: number,
     options?: Partial<WatchFileSystemOptions>,
     callback?: Function,
     callbackUndelayed?: Function
